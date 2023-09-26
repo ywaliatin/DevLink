@@ -1,0 +1,506 @@
+/* index.css */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Style for the entire viewport */
+.full-screen-container {
+  display: flex;
+  align-items: center; /* vertically centers children */
+  justify-content: center; /* horizontally centers children */
+  height: 100vh; /* covers full viewport height */
+  width: 100%; /* covers full viewport width */
+  margin-top: -250px;
+}
+
+.full-screen-container2 {
+  display: flex;
+  align-items: center; /* vertically centers children */
+  justify-content: center; /* horizontally centers children */
+  height: 100vh; /* covers full viewport height */
+  width: 100%; /* covers full viewport width */
+  margin-top: -210px;
+}
+
+/* Style for the login segment */
+.login-segment {
+  max-width: 600px; /* Increase this value for a wider form */
+    width: 90%; /* Setting a width value so it doesn't go full width on smaller screens */
+    padding: 20px; /* Add padding if needed */
+  margin: 0 auto; /* centers the segment if it's within a flex container or block level */
+}
+
+/* Style for the form inputs within the login segment */
+.login-segment .ui.form .field > input {
+  width: 100%; /* takes up the full width of its container, the login-segment */
+}
+
+
+/* Update the grid template columns and the gap */
+.freelancer-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust this value for the desired card width */
+  gap: 30px;  /* Increase gap for more space between cards */
+  padding: 20px;
+}
+
+/* Add background color to h4 elements */
+h4 {
+  background-color: #364c8a37; /* Replace this with the color you desire */
+  justify-content: center;
+  display: flex;
+  padding: 5px; /* Add some padding to make the background visible */
+}
+
+.grey-button {
+  background-color: #f1f1f1;
+  color: rgb(18, 17, 17); /* Setting text color to white for better visibility on grey background */
+  border: none; /* Optional: removes the border */
+}
+
+.sub{
+  text-align: center;
+}
+
+
+button:hover {
+  background-color: #373838;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f1f1f1;
+  color: #171616;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+h2{
+  text-align: center;
+  background-color: #0b0a0a;
+  color: #fff;
+  font-style: italic;
+}
+
+/* Set a specific width for the cards */
+.card {
+  width: 400px;  /* Adjust this width for the desired card width */
+}
+
+/* Update responsive grid layout for larger screens */
+@media (min-width: 768px) {
+  .freelancer-list {
+    grid-template-columns: repeat(4, 1fr); /* Adjust for larger screens if needed */
+    margin-left: 60px;
+    margin-right: 40px;
+  }
+
+  
+  .card {
+    width: 450px;  /* Even wider cards for larger screens */
+  }
+
+  .findajob{
+    margin-left: 700px;
+  }
+
+  
+}
+
+/* Update responsive grid layout for smaller screens */
+@media (max-width: 767px) {
+  .freelancer-list {
+    grid-template-columns: repeat(2, 1fr); /* On smaller screens, 2 cards per row might be better */
+  }
+
+  .findajob{
+    margin-left: 300px;
+  }
+
+  
+}
+
+/* This is the flex container that wraps the image and the name */
+.profile-content {
+  display: flex; 
+  align-items: center;
+  gap: 10px;
+}
+
+.card-image {
+  width: 50px;
+  height: 50px;
+}
+
+/* Override default styles that may be causing Card.Header to break into a new line */
+.card-name {
+  margin: 0;
+  flex-grow: 1;
+  display: inline-block;
+}
+
+.buttonmoreless{
+  margin-left: 400px;
+}
+
+
+
+/* Center content horizontally and vertically */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -290px;
+  height: 100vh; /* Adjust the height as needed for your layout */
+}
+
+.features{
+  text-align: center;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: smaller;
+  font-style: italic;
+  margin-left: 250px;
+}
+
+.input-container {
+  display: flex; 
+  align-items: center;
+  margin-left: -150px;
+}
+
+.inputsignup-label {
+  margin-bottom: 10px; /* Adjust as needed */
+  margin-left: -250px;
+  font-style:inherit;
+}
+
+.namesignup, .emailsignup {
+  flex: 1;  /* takes up the remaining space */
+  min-width: 100px;  /* Minimum width */
+  height: 35px;
+  margin-right: -77px;  /* spacing between inputs */
+}
+
+/* Footer styles */
+.footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Column styles */
+.column {
+  flex: 1;
+  text-align: center;
+}
+
+.footerclass{
+  margin-top: 350px;
+}
+
+.devlink{
+  text-align: center;
+  margin-left: 400px;
+}
+
+
+
+.show-more-button{
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.card-gallery {
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px auto; /* Add this to center the card gallery horizontally */
+}
+
+.gallery-card {
+  width: 200px;
+  height: 350px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image {
+  width: 90%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+
+
+/* Add styles for larger screens */
+@media (min-width: 768px) {
+  .find-dev-item {
+    margin-left: 100px; /* Adjust the margin as needed */
+  }
+  
+  .find-jobs {
+    margin-left: 20px; /* Adjust the margin as needed */
+  }
+
+  .headerImage {
+    margin-left: 350px; /* Adjust the margin as needed */
+    margin-top: -320px; /* Adjust the margin as needed */
+    margin-bottom: 40px;
+  }
+
+  /* To center the card gallery on larger screens, reset the margin-left for card-gallery */
+  .card-gallery {
+    margin-right: 315px;
+  }
+
+  /* Footer styles */
+.footer2 {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer2 h3{
+  margin-left: 500px;
+}
+
+.footer3 {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.footer2 h3{
+  margin-left: 510px;
+}
+
+.footer3 {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer3 .footerr{
+  margin-top: -0px;
+  margin-Left: 400px
+  
+}
+
+.footer3 .link{
+  margin-top: -0px;
+  margin-right: 300px
+  
+}
+
+.footer3 .dev{
+  margin-top: -0px;
+  margin-Left: 20px
+  
+}
+
+.inputsignup-label {
+  margin-bottom: 10px; /* Adjust as needed */
+  margin-left: -250px;
+  font-style:inherit;
+  font-size: 20px;
+}
+
+.emailsignup {
+  flex: 1; /* takes up the remaining space */
+  width: 300px;
+  height: 34px;
+  margin-left: 80px;
+  margin-right: 10px; /* spacing between input and button */
+}
+
+.grey-button2 {
+  background-color: rg#555151;
+  color: rgb(22, 21, 21); 
+  border: none; 
+  margin-right: 80px;
+  width: 100px;
+  padding: 10px 15px;  /* Adjusted padding for better appearance */
+}
+  
+}
+
+/* Add styles for smaller screens */
+@media (max-width: 767px) {
+  .find-dev-item {
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+  
+  .find-jobs {
+    margin-left: 10px; /* Adjust the margin as needed */
+  }
+  
+
+  .emailsignup {
+    flex: 1; /* takes up the remaining space */
+    width: 300px;
+    height: 34px;
+    margin-left: 80px;
+    margin-right: 10px; /* spacing between input and button */
+  }
+
+  .grey-button2 {
+    background-color: rg#555151;
+    color: rgb(22, 21, 21); 
+    border: none; 
+    margin-right: 80px;
+    width: 100px;
+    padding: 10px 15px;  /* Adjusted padding for better appearance */
+  }
+
+  .headerImage {
+    margin-left: -110px; /* Adjust the margin as needed */
+    margin-top: -320px; /* Adjust the margin as needed */
+  }
+
+   /* To center the card gallery on smaller screens, reset the margin-left for card-gallery */
+   .card-gallery {
+    margin-left: 0;
+  }
+
+  .card-gallery {
+    width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0px auto; /* Add this to center the card gallery horizontally */
+  }
+  
+  .gallery-card {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .gallery-image {
+    width: 90%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+    /* Footer styles */
+.footer2 {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer2 h3{
+  margin-left: 250px;
+}
+
+.footer3 {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer3 p{
+  margin-top: -0px;
+  margin-Left: '-80px'
+  
+}
+
+.footeer2 .footerr{
+  margin-left: 100[px];
+} 
+
+}
+
+/* JobCard */
+
+.job-card {
+  width: 100%;
+  margin: 10px 0;
+  cursor: pointer; /* To indicate it's clickable */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.3s ease; 
+}
+
+.job-card:hover {
+  transform: scale(1.05); /* Optional: add a scale effect on hover */
+}
+
+.job-profile-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.job-card-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px; /* To make it circular if it's a square image */
+}
+
+.job-card-title {
+  margin: 0;
+  flex-grow: 1;
+  display: inline-block;
+}
+
+/* Styles for grid layout with 3-4 JobCards per row */
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px; 
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .job-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .job-list {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+
+
+
+
+
