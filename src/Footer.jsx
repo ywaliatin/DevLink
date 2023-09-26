@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="column">
         <h3>For Clients</h3>
         <p><a href="url">How it works</a></p>
-        <p><a href="./EmpJobForm">How to post a job</a></p>
+        <p><a href="./JobPage">How to post a job</a></p>
         <p><a href="url">Find Dev</a></p>
       </div>
       <div className="column">
