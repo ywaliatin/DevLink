@@ -24,11 +24,11 @@ const Footer = () => {
       <div className="column">
         <h3>Stay connected</h3>
         <p> 
-        <a href="https://www.linkedin.com" target="_blank">
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
               <img src= {socialmediaImage} alt="LinkedIn" width="30" height="30" style={{ marginRight: '10px' }}/>
              
         </a>
-        <a href="https://www.facebook.com" target="_blank">
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <img src= {socialmediaImage2} alt="LinkedIn" width="30" height="30" />
              
         </a>
