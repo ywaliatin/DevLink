@@ -1,10 +1,15 @@
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 const PayButton = () => {
+
+  const [{ isLoaded }] = usePayPalScriptReducer();
+  
+  if (!isLoaded) return <div>Loading...</div>;
+
   return (
-    <PayPalScriptProvider options={{ "client-id": "ENZ7fD6INvv6PJy0Gqu1ENA5rEYw-OYlJyQdyqPLVOocrnUO7BT478qV20t1vtP-XLL9xzY9vHtuQjIy" }}>
-      <PayPalButtons
+       <PayPalButtons
         createOrder={(data, actions) => {
+
           return actions.order.create({
             purchase_units: [
               {
@@ -20,8 +25,12 @@ const PayButton = () => {
           return actions.order.capture();
         }}
       />
-    </PayPalScriptProvider>
+    
   );
 };
 
-export default PayButton;
+export default () => (
+    <PayPalScriptProvider options={{ "client-id": "AcxTQrEC8cnGnTj1BLl_Ix2fyXLadjgkf1KUYFN9hkMyXHo48DSmMW3iz64n2YV2uiaK1FcGD2-zjwdz" }}>
+      <PayButton />
+    </PayPalScriptProvider>
+  );
