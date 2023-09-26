@@ -3,8 +3,7 @@
 import React, { useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import CardGallery2 from './CardGallery2';
-import CardGallery from './CardGallery'; // Make sure the import path is correct
+
 import { Container, Divider } from 'semantic-ui-react';
 import MenuComponent from './Menu';
 import HeaderImage from './HeaderImage';
@@ -153,7 +152,7 @@ function App() {
           <HeaderImage />
           <Routes>
           <Route path="/JobPage" element={<JobPage />} />
-
+          
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<UserProfile />} />
