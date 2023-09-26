@@ -3,9 +3,7 @@ import { Form, Grid, Button } from 'semantic-ui-react';
 import { db, storage } from './firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { push, set } from 'firebase/database';
-import PayButton from './PayButton';
 
-//<p>{message}</p> {/* Display feedback message below the form */}
 
 function Emp2JobForm(){
     
@@ -25,8 +23,6 @@ function Emp2JobForm(){
 
         const [message, setMessage] = useState(''); // State for feedback message
     
-        const [showPayButton, setShowPayButton] = useState(false);
-
         const handleProfileImageChange = (e) => {
             setDetails({...details, profileImage: e.target.files[0]});
         };
@@ -77,7 +73,6 @@ profileImageUrl = await getDownloadURL(storageRef);
                     throw new Error('Failed to post data');
                 } else {
                     setMessage('Job posted successfully!');
-                    setShowPayButton(true);
                 }
             } catch (error) {
                 console.error(error);
@@ -167,10 +162,7 @@ profileImageUrl = await getDownloadURL(storageRef);
                 
         
                 <button className="grey-button" onClick={PostData}>Submit</button>
-                {message && <p>{message}</p>} {/* Render the feedback message */}
-            
-            {showPayButton && <PayButton />}
-                
+                <p>{message}</p> {/* Display feedback message below the form */}
             </div>
         )
         
