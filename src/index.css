@@ -9,6 +9,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.fullWidthContainer{
+  margin-top: 100px;
+}
+
 /* Style for the entire viewport */
 .full-screen-container {
   display: flex;
