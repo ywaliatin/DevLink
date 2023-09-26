@@ -5,6 +5,8 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { push, set } from 'firebase/database';
 import PayButton from './PayButton';
 
+//<p>{message}</p> {/* Display feedback message below the form */}
+
 function Emp2JobForm(){
     
         const [details, setDetails] = useState({
@@ -163,7 +165,7 @@ profileImageUrl = await getDownloadURL(storageRef);
         
                 <button className="grey-button" onClick={PostData}>Submit</button>
                 <PayButton />
-                <p>{message}</p> {/* Display feedback message below the form */}
+                
             </div>
         )
         
