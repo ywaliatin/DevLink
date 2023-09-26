@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css'; // Import your CSS file for Footer styling
 import socialmediaImage from "./Images/link.png"; 
 import socialmediaImage2 from "./Images/fb.png"; 
+import JobPage from './JobPage';
 
 const Footer = () => {
     
@@ -18,7 +19,7 @@ const Footer = () => {
       <div className="column">
         <h3>For Clients</h3>
         <p><a href="url">How it works</a></p>
-        <p><a href="./JobPage">How to post a job</a></p>
+        <p><Link to="/JobPage">How to post a job</Link></p>
         <p><a href="url">Find Dev</a></p>
       </div>
       <div className="column">

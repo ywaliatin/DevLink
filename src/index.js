@@ -30,7 +30,7 @@ import JobCard from './JobCard';
 import EmpCard from './EmpCard';
 import CustomerList from './CustomerList';
 import Signup from './signup';
-
+import JobPage from './JobPage';
 
 const data = [
   {
@@ -152,6 +152,8 @@ function App() {
           </Container>
           <HeaderImage />
           <Routes>
+            <Route path="/JobPage" component={JobPage} />
+            
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<UserProfile />} />
