@@ -25,6 +25,8 @@ function Emp2JobForm(){
 
         const [message, setMessage] = useState(''); // State for feedback message
     
+        const [showPayButton, setShowPayButton] = useState(false);
+
         const handleProfileImageChange = (e) => {
             setDetails({...details, profileImage: e.target.files[0]});
         };
@@ -75,6 +77,7 @@ profileImageUrl = await getDownloadURL(storageRef);
                     throw new Error('Failed to post data');
                 } else {
                     setMessage('Job posted successfully!');
+                    setShowPayButton(true);
                 }
             } catch (error) {
                 console.error(error);
@@ -164,7 +167,9 @@ profileImageUrl = await getDownloadURL(storageRef);
                 
         
                 <button className="grey-button" onClick={PostData}>Submit</button>
-                <PayButton />
+                {message && <p>{message}</p>} {/* Render the feedback message */}
+            
+            {showPayButton && <PayButton />}
                 
             </div>
         )
