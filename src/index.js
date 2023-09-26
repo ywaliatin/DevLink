@@ -152,7 +152,7 @@ function App() {
           </Container>
           <HeaderImage />
           <Routes>
-            <Route path="/JobPage" element={JobPage} />
+          <Route path="/login" element={<JobPage />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
