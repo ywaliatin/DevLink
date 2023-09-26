@@ -2,7 +2,9 @@ import React from 'react';
 import './index.css'; // Import your CSS file for Footer styling
 import socialmediaImage from "./Images/link.png"; 
 import socialmediaImage2 from "./Images/fb.png"; 
-import JobPage from './JobPage';
+
+import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
     
