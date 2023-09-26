@@ -3,6 +3,7 @@ import { Form, Grid, Button } from 'semantic-ui-react';
 import { db, storage } from './firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { push, set } from 'firebase/database';
+import PayButton from './PayButton';
 
 function Emp2JobForm(){
     
@@ -161,6 +162,7 @@ profileImageUrl = await getDownloadURL(storageRef);
                 
         
                 <button className="grey-button" onClick={PostData}>Submit</button>
+                <PayButton />
                 <p>{message}</p> {/* Display feedback message below the form */}
             </div>
         )
