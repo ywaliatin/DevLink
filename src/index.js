@@ -152,8 +152,8 @@ function App() {
           </Container>
           <HeaderImage />
           <Routes>
-            <Route path="/JobPage" component={JobPage} />
-            
+            <Route path="/JobPage" element={JobPage} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<UserProfile />} />
