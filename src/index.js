@@ -145,7 +145,6 @@ function App() {
   return (
     
     <UserContext.Provider value={{ user, setUser }}>
-      <PayPalScriptProvider options={{ "client-id": "AcxTQrEC8cnGnTj1BLl_Ix2fyXLadjgkf1KUYFN9hkMyXHo48DSmMW3iz64n2YV2uiaK1FcGD2-zjwdz" }}></PayPalScriptProvider>
       <Router>
         <div>
           <Container className="container">

@@ -3,8 +3,6 @@ import { Form, Grid, Button } from 'semantic-ui-react';
 import { db, storage } from './firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { push, set } from 'firebase/database';
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
-
 
 function Emp2JobForm(){
     
@@ -21,25 +19,6 @@ function Emp2JobForm(){
           forAtLeast: ""
           
         });
-
-        const [{ isPending }, dispatch] = usePayPalScriptReducer();
-  
-  const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-          value: '10' // or any other amount you want to charge
-        }
-      }]
-    });
-  };
-
-  const onApprove = (data, actions) => {
-    return actions.order.capture().then((details) => {
-      // Call your backend or firebase function to submit post data here
-      PostData();
-    });
-  };
 
         const [message, setMessage] = useState(''); // State for feedback message
     
@@ -181,14 +160,10 @@ profileImageUrl = await getDownloadURL(storageRef);
             </div>
                 
         
-            <PayPalButtons
-            createOrder={createOrder}
-            onApprove={onApprove}
-            disabled={isPending} // Disable the button until the PayPal scripts are loaded
-            />
-            <p>{message}</p>          
+                <button className="grey-button" onClick={PostData}>Submit</button>
+                <p>{message}</p> {/* Display feedback message below the form */}
             </div>
-        );
+        )
         
 }
 
