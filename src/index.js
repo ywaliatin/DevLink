@@ -16,7 +16,7 @@ import Login2 from './login2';
 import Login from './login'; // Import your Login component
 import Register from './register'; // Import your Login component
 import UserProfile from './profile';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import  UserContext  from './UserContext';
 import ForgotPassword from './forgot-password';
 import FreelancerCard from './FreelancerCard';
@@ -30,7 +30,6 @@ import EmpCard from './EmpCard';
 import CustomerList from './CustomerList';
 import Signup from './signup';
 import JobPage from './JobPage';
-import Emp2JobForm from './Emp2JobForm';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const data = [
@@ -137,7 +136,6 @@ const customerData = [
 
 function App() {
   // State to hold the user data
-  const location = useLocation();
   const [user, setUser] = useState(null);
  
 
@@ -155,12 +153,10 @@ function App() {
             <MenuComponent />
           </Container>
           {/* Conditionally render HeaderImage based on the current pathname */}
-          {window.location.pathname !== '/JobPage' && <HeaderImage />} 
-{window.location.pathname !== '/Emp2JobForm' && <HeaderImage />} 
-
+          {location.pathname !== '/JobPage' && <HeaderImage />} 
           <Routes>
           <Route path="/JobPage" element={<JobPage />} />
-          <Route path="/Emp2JobForm" element={<Emp2JobForm />} />
+
           
           
             <Route path="/login" element={<Login />} />
