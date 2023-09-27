@@ -16,7 +16,7 @@ import Login2 from './login2';
 import Login from './login'; // Import your Login component
 import Register from './register'; // Import your Login component
 import UserProfile from './profile';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import  UserContext  from './UserContext';
 import ForgotPassword from './forgot-password';
 import FreelancerCard from './FreelancerCard';
@@ -137,6 +137,7 @@ const customerData = [
 
 function App() {
   // State to hold the user data
+  const location = useLocation();
   const [user, setUser] = useState(null);
  
 
@@ -155,7 +156,8 @@ function App() {
           </Container>
           {/* Conditionally render HeaderImage based on the current pathname */}
           {location.pathname !== '/JobPage' && <HeaderImage />} 
-          {location.pathname !== '/Emp2JobForm' && <HeaderImage />} 
+          {location.pathname !== '/Emp2JobForm' && <HeaderImage />}
+
           <Routes>
           <Route path="/JobPage" element={<JobPage />} />
           <Route path="/Emp2JobForm" element={<Emp2JobForm />} />
