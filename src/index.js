@@ -155,8 +155,8 @@ function App() {
             <MenuComponent />
           </Container>
           {/* Conditionally render HeaderImage based on the current pathname */}
-          {location.pathname !== '/JobPage' && <HeaderImage />} 
-          {location.pathname !== '/Emp2JobForm' && <HeaderImage />}
+          {window.location.pathname !== '/JobPage' && <HeaderImage />} 
+{window.location.pathname !== '/Emp2JobForm' && <HeaderImage />} 
 
           <Routes>
           <Route path="/JobPage" element={<JobPage />} />
