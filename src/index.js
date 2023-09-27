@@ -3,7 +3,7 @@
 import React, { useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
+import { useLocation } from 'react-router-dom';
 import { Container, Divider } from 'semantic-ui-react';
 import MenuComponent from './Menu';
 import HeaderImage from './HeaderImage';
@@ -30,7 +30,7 @@ import EmpCard from './EmpCard';
 import CustomerList from './CustomerList';
 import Signup from './signup';
 import JobPage from './JobPage';
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 
 const data = [
   {
@@ -137,13 +137,12 @@ const customerData = [
 function App() {
   // State to hold the user data
   const [user, setUser] = useState(null);
- 
+  const location = useLocation();
 
  
    
 
   return (
-    
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
         <div>
@@ -152,11 +151,10 @@ function App() {
             <MenuComponent />
           </Container>
           {/* Conditionally render HeaderImage based on the current pathname */}
+          
           {location.pathname !== '/JobPage' && <HeaderImage />} 
           <Routes>
           <Route path="/JobPage" element={<JobPage />} />
-
-          
           
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
