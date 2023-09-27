@@ -30,6 +30,7 @@ import EmpCard from './EmpCard';
 import CustomerList from './CustomerList';
 import Signup from './signup';
 import JobPage from './JobPage';
+import Emp2JobForm from './Emp2JobForm';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const data = [
@@ -154,8 +155,11 @@ function App() {
           </Container>
           {/* Conditionally render HeaderImage based on the current pathname */}
           {location.pathname !== '/JobPage' && <HeaderImage />} 
+          {location.pathname !== '/Emp2JobForm' && <HeaderImage />} 
           <Routes>
           <Route path="/JobPage" element={<JobPage />} />
+          <Route path="/Emp2JobForm" element={<Emp2JobForm />} />
+          
           
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
