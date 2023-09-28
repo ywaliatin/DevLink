@@ -4,7 +4,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
 
 function Emp2JobForm(){
-    
+    console.log('Emp2JobForm Mounted');
         const [details, setDetails] = useState({
           title: "",
           email: "",
