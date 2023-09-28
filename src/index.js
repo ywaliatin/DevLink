@@ -137,11 +137,7 @@ const customerData = [
 function App() {
   // State to hold the user data
   const [user, setUser] = useState(null);
-  const location = useLocation();
-
- 
-   
-
+  
   return (
     <UserContext.Provider value={{ user, setUser }}>
       <Router>
@@ -150,10 +146,9 @@ function App() {
           
             <MenuComponent />
           </Container>
-          {/* Conditionally render HeaderImage based on the current pathname */}
-          
-          {location.pathname !== '/JobPage' && <HeaderImage />} 
+          {/* Use MainContent component inside Router */}
           <Routes>
+          
           <Route path="/JobPage" element={<JobPage />} />
           
             <Route path="/login" element={<Login />} />

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Grid, Button } from 'semantic-ui-react';
 import { db, storage } from './firebase';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { push, set } from 'firebase/database';
+
 
 function Emp2JobForm(){
     
