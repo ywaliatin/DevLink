@@ -30,7 +30,8 @@ import EmpCard from './EmpCard';
 import CustomerList from './CustomerList';
 import Signup from './signup';
 import JobPage from './JobPage';
-
+import PaymentForm from './PaymentForm';
+import Emp2JobForm from './Emp2JobForm';
 
 const data = [
   {
@@ -148,9 +149,9 @@ function App() {
           </Container>
           {/* Use MainContent component inside Router */}
           <Routes>
-          
+          <Route path="/Emp2JobForm" element={<Emp2JobForm />} />
           <Route path="/JobPage" element={<JobPage />} />
-          
+          <Route path="/PaymentForm" element={<PaymentForm />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<UserProfile />} />

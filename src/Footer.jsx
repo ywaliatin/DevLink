@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="column">
         <h3>For Dev</h3>
         <p><a href="url">How it works</a></p>
-        <p><a href="url">How to create a profile</a></p>
+        <p><Link to="/PaymentForm">How to post a job</Link></p>
         <p><a href="url">Find Jobs</a></p>
       </div>
       <div className="column">
