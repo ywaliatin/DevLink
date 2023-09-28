@@ -8,8 +8,13 @@ function PaymentForm() {
   //const history = useHistory(); // Initialize useHistory
 
   return (
+    
     <div>
-      <PayPalButton
+
+<h3>Payment: $0.01 annualy</h3>
+        <h3>Once the payment has been proccessed, you may post a job.</h3>
+    
+          <PayPalButton
         amount="0.01" 
         onSuccess={(details, data) => {
           alert("Transaction completed by " + details.payer.name.given_name);
