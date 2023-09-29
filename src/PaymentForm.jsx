@@ -9,7 +9,7 @@ function PaymentForm() {
 
   return (
     
-    <div>
+    <div className='headerImage2'>
 
 <h3>Payment: $0.01 annualy</h3>
         <h3>Once the payment has been proccessed, you may post a job.</h3>

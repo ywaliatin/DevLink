@@ -274,6 +274,12 @@ h2{
     margin-bottom: 40px;
   }
 
+  .headerImage2 {
+    margin-left: 370px; /* Adjust the margin as needed */
+    margin-top: -20px; /* Adjust the margin as needed */
+    margin-bottom: 40px;
+  }
+
   /* To center the card gallery on larger screens, reset the margin-left for card-gallery */
   .card-gallery {
     margin-right: 315px;
@@ -386,6 +392,11 @@ h2{
   .headerImage {
     margin-left: -110px; /* Adjust the margin as needed */
     margin-top: -320px; /* Adjust the margin as needed */
+  }
+
+  .headerImage2 {
+    margin-left: 2px; /* Adjust the margin as needed */
+    margin-top: 5px; /* Adjust the margin as needed */
   }
 
    /* To center the card gallery on smaller screens, reset the margin-left for card-gallery */
