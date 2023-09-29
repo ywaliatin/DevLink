@@ -9,7 +9,7 @@ function NewsletterSubscription() {
   const handleSubscribe = async () => {
     if (email && name) {
       try {
-        const res = await fetch("http://localhost:3001/subscribe", {
+        const res = await fetch("https://devlinksit313-default-rtdb.firebaseio.com/subscribers.json", {
           method:'POST',
           headers:{
             'Content-Type':'application/json'

@@ -16,13 +16,13 @@ const Footer = () => {
         <h3>For Dev</h3>
         <p><a href="url">How it works</a></p>
         <p><Link to="/PaymentForm">How to post a job</Link></p>
-        <p><a href="url">Find Jobs</a></p>
+        <p><Link to="/EmpList">Find a Job</Link></p>
       </div>
       <div className="column">
         <h3>For Clients</h3>
         <p><a href="url">How it works</a></p>
         <p><Link to="/JobPage">How to post a job</Link></p>
-        <p><a href="url">Find Dev</a></p>
+        <p><Link to="/JobList">Find Dev</Link></p>
       </div>
       <div className="column">
         <h3>Stay connected</h3>

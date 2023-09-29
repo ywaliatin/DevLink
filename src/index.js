@@ -147,15 +147,16 @@ function Content() {
       {location.pathname !== '/JobPage' && <HeaderImage />}
       
       <Routes>
-        <Route path="/JobPage" element={<JobPage />} />
-        <Route path="/PaymentForm" element={<PaymentForm />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<UserProfile />} />
+            <Route path="/JobPage" element={<JobPage />} />
+            <Route path="/PaymentForm" element={<PaymentForm />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/FreelancerCard" element={<FreelancerCard />} />
             <Route path="/CustomerCard" element={<CustomerCard />} />
-            
+            <Route path="/EmpList" element={<EmpList />} />
+            <Route path="/JobList" element={<JobList />} />
             <Route path=":freelancejobId" element={<EmpCard />} />
             
             <Route path=":jobId" element={<JobCard />} />
