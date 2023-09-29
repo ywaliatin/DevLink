@@ -135,64 +135,64 @@ const customerData = [
   // Add more customer items as needed
 ];
 
-function App() {
-  // State to hold the user data
-  const [user, setUser] = useState(null);
-  
+function Content() {
+  const location = useLocation();
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <Router>
-        <div>
-          <Container className="container">
-          
-            <MenuComponent />
-          </Container>
-          {/* Use MainContent component inside Router */}
-          <Routes>
-          <Route path="/Emp2JobForm" element={<Emp2JobForm />} />
-          <Route path="/JobPage" element={<JobPage />} />
-          <Route path="/PaymentForm" element={<PaymentForm />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/profile" element={<UserProfile />} />
+    <div>
+      <Container className="container">
+        <MenuComponent />
+      </Container>
+      
+      {location.pathname !== '/JobPage' && <HeaderImage />}
+      
+      <Routes>
+        <Route path="/JobPage" element={<JobPage />} />
+        <Route path="/PaymentForm" element={<PaymentForm />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<UserProfile />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/FreelancerCard" element={<FreelancerCard />} />
             <Route path="/CustomerCard" element={<CustomerCard />} />
-            <Route path="JobList" element={<JobList />}>
-            <Route path=":jobId" element={<JobCard />} />
-            </Route>
-
-            <Route path="EmpList" element={<EmpList />}>
+            
             <Route path=":freelancejobId" element={<EmpCard />} />
-            </Route>
+            
+            <Route path=":jobId" element={<JobCard />} />
+        {/*... Other Routes ...*/}
+        <Route path="/" element={
+          <>
+            <JobList />
+            <Divider />
+            <EmpList/>
+            <Divider />
+            <NewsLetterSubscription/>
+            <Container className="container">
+              <Footer/>
+              <Divider />
+              <Footer2/>
+              <Footer3/>
+            </Container>
+          </>
+        }/>
+      </Routes>
+    </div>
+  );
+}
 
-            <Route path="/" element={
-                <>
-                  
-                  <JobList />
-                  <Divider />
-                  <EmpList/>
-                  <Divider />
-                  <NewsLetterSubscription/>
-                  <Container className="container">
-                    <Footer/>
-                    <Divider />
-                    <Footer2/>
-                    
-                    <Footer3/>
-                    
-                  </Container>
-                </>
-              }/>
-            {/* You can add more routes as needed */}
-          </Routes>
-          
 
-        </div>
+function App() {
+  const [user, setUser] = useState(null);
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
+        <Content />
       </Router>
     </UserContext.Provider>
   );
 }
+
 
 
 
