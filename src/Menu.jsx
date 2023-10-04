@@ -14,7 +14,7 @@ const MenuComponent = () => {
       await logout();  // Call the logout function
       setUser(null); // Reset user in the context
       alert('Logged out successfully');
-      navigate('/login'); // Navigate to the main homepage
+      navigate('/login2'); // Navigate to the main homepage
     } catch (error) {
       alert('Error logging out: ' + error.message);
     }
@@ -42,12 +42,12 @@ const MenuComponent = () => {
       )}
   
       {user ? (
-        <Menu.Item as={Link} to="/login" onClick={handleLogout} className='find-jobs'>
+        <Menu.Item as={Link} to="/login2" onClick={handleLogout} className='find-jobs'>
           Logout
         </Menu.Item>
       ) : (
         <>
-          <Menu.Item as={Link} to="/login" className='find-jobs'>
+          <Menu.Item as={Link} to="/login2" className='find-jobs'>
             Login
           </Menu.Item>
           <Menu.Item as={Link} to="/register" className='find-jobs'>

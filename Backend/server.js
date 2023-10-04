@@ -2,20 +2,52 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const axios = require('axios');
 
 const app = express();
-app.use(cors());
+
+// Place this middleware at the very top of your middleware stack
+app.use((req, res, next) => {
+  console.log('Request received at:', new Date().toISOString(), req.method, req.url);
+  next();
+});
+
+
+// Middlewares
+app.use(cors({ origin: 'http://localhost:3000' })); // Adjust the origin to match your frontend’s URL
 app.use(bodyParser.json());
 
 // Setup nodemailer transporter, e.g. with SMTP
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'tintinwaliatin@gmail.com',
-    pass: '050969sM',
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
+// Define the sendMessage route
+app.post('/sendMessage', async (req, res) => {
+  console.log('Inside /sendMessage route');
+  try {
+    const userMessage = req.body.message;
+    const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+      prompt: userMessage,
+      max_tokens: 100,
+    }, {
+      headers: {
+        'Authorization': process.env.OPENAI_API_KEY
+      }
+    });
+    
+    res.send(response.data.choices[0].text);
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Define the subscribe route
 app.post('/subscribe', async (req, res) => {
   const { name, email } = req.body;
   try {
@@ -34,6 +66,7 @@ app.post('/subscribe', async (req, res) => {
   }
 });
 
-app.listen(3002, () => {
-  console.log('Server is running on port 3001');
+// Start the server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000'); // Updated port in console log message
 });

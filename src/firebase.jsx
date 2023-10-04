@@ -33,6 +33,11 @@ const database = getDatabase(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
+// Disable app verification in development mode
+if (process.env.NODE_ENV === 'development') {
+  auth.settings = { appVerificationDisabledForTesting: true };
+}
+
 export { 
   auth, 
   signInWithEmailAndPassword, 
@@ -63,3 +68,4 @@ export const listenToAuthChanges = (userCallback) => {
 export const resetPassword = (email) => {
   return sendPasswordResetEmail(auth, email);
 };
+

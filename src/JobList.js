@@ -4,6 +4,7 @@ import { getDatabase, onValue, ref, remove } from 'firebase/database';
 import JobCard from './JobCard';
 import UserContext from './UserContext';
 
+
 function JobList() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
@@ -40,10 +41,11 @@ function JobList() {
   const handleCardClick = (jobId) => {
     if (!user) {
       alert('Please login/register first to access all FreeList/EmpList cards.');
-      navigate('/login');
-      return;
+      navigate('/login2');
+      return false; // User is not logged in.
     }
-    navigate(`/JobList/${jobId}`);
+    //navigate(`/JobList/${jobId}`);
+    return true; // User is logged in.
   };
 
   return (
@@ -52,9 +54,11 @@ function JobList() {
       <div className="job-list">
         <input type="text" placeholder="Filter by skill or job title..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
         {filteredJobs.slice(0, visibleJobs).map((job) => (
-          <div key={job.id} onClick={() => handleCardClick(job.id)}>
-            <JobCard job={job} onDelete={deleteJob} />
-          </div>
+          job && (
+            <div key={job.id}>
+              <JobCard job={job} onDelete={deleteJob} onCardClick={() => handleCardClick(job.id)} />
+            </div>
+          )
         ))}
         {visibleJobs < 4 && <button className="grey-button" onClick={handleShowLess}>Show me less</button>}
         {visibleJobs < filteredJobs.length && <button className="grey-button" onClick={handleShowMore}>Show me more</button>}
@@ -62,5 +66,4 @@ function JobList() {
     </div>
   );
 }
-
 export default JobList;

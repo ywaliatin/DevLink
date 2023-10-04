@@ -31,7 +31,8 @@ import CustomerList from './CustomerList';
 import Signup from './signup';
 import JobPage from './JobPage';
 import PaymentForm from './PaymentForm';
-import Emp2JobForm from './Emp2JobForm';
+import ChatComponent from './ChatGPT';
+import ChatGPT from './ChatGPT';
 
 const data = [
   {
@@ -149,6 +150,7 @@ function Content() {
       <Routes>
             <Route path="/JobPage" element={<JobPage />} />
             <Route path="/PaymentForm" element={<PaymentForm />} />
+            <Route path="/login2" element={<Login2 />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<UserProfile />} />
@@ -157,9 +159,10 @@ function Content() {
             <Route path="/CustomerCard" element={<CustomerCard />} />
             <Route path="/EmpList" element={<EmpList />} />
             <Route path="/JobList" element={<JobList />} />
-            <Route path=":freelancejobId" element={<EmpCard />} />
+            <Route path="/ChatGPT" element={<ChatGPT />} />
+            <Route path="/EmpList/:freelancejobId" element={<EmpCard />} />
             
-            <Route path=":jobId" element={<JobCard />} />
+            <Route path="/JobList/:jobId" element={<JobCard />} />
         {/*... Other Routes ...*/}
         <Route path="/" element={
           <>
@@ -173,6 +176,7 @@ function Content() {
               <Divider />
               <Footer2/>
               <Footer3/>
+              
             </Container>
           </>
         }/>
@@ -197,4 +201,7 @@ function App() {
 
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<App />, document.getElementById('root'));
+
+const root = document.getElementById('root');
+ReactDOM.createRoot(root).render(<App />);

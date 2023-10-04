@@ -1,33 +1,34 @@
-import React, { useState, useContext, useEffect } from 'react';
-//import { auth, signInWithPhoneNumber, RecaptchaVerifier } from './firebase'; // import additional Firebase Auth methods
+import React, { useState, useContext } from 'react';
+import { signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
 import { auth } from "./firebase";
-import { RecaptchaVerifier } from "firebase/auth";
-import { signInWithPhoneNumber } from "firebase/auth"; 
-
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Segment } from 'semantic-ui-react';
-import UserContext from './UserContext';
+import UserContext from './UserContext'; 
 
-const Login = () => {
-  const countrycode = "+61"
+function Login2() {
+  const countrycode = "+61";
   const [phoneNumber, setPhoneNumber] = useState(countrycode);
   const [otp, setOtp] = useState('');
-  const [confirmationResult, setConfirmationResult] = useState(false);
-
+  const [confirmationResult, setConfirmationResult] = useState(null); // Use null instead of false
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
   const handleLogin = async () => {
-    try {
-      const recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', null, auth);
-      const confirmation = await signInWithPhoneNumber(phoneNumber, recaptchaVerifier);
+  try {
+    if (process.env.NODE_ENV === 'development') {
+      // bypass OTP verification in development
+      setConfirmationResult({ confirm: () => Promise.resolve({ user: {/* mock user data */} }) });
+    } else {
+      const recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {}, auth);
+      const confirmation = await signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier);
       setConfirmationResult(confirmation);
-    } catch (error) {
-      alert('Error sending OTP: ' + error.message);
     }
-  };
-  
+  } catch (error) {
+    alert('Error sending OTP: ' + error.message);
+  }
+};
 
+  
   const verifyOtp = async () => {
     try {
       const userCredential = await confirmationResult.confirm(otp);
@@ -39,12 +40,12 @@ const Login = () => {
       alert('Error verifying OTP: ' + error.message);
     }
   };
-
+  
   return (
     <div className="full-screen-container">
       <Segment className="login-segment">
         <h4>Login</h4>
-        <Form>
+        <Form onSubmit={(e) => e.preventDefault()}>
           <Form.Input
             type="text"
             placeholder="Phone Number"
@@ -61,21 +62,16 @@ const Login = () => {
           ) : null}
           <Button.Group>
             {!confirmationResult ? (
-              <Button primary onClick={handleLogin}>
-                Send OTP
-              </Button>
+              <Button type="button" primary onClick={handleLogin}>Send OTP</Button>
             ) : (
-              <Button primary onClick={verifyOtp}>
-                Verify OTP
-              </Button>
+              <Button type="button" primary onClick={verifyOtp}>Verify OTP</Button>
             )}
           </Button.Group>
-          {/* Add this div for the reCAPTCHA */}
           <div id="recaptcha-container"></div>
         </Form>
       </Segment>
     </div>
   );
-};
+}
 
-export default Login;
+export default Login2;
