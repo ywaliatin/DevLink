@@ -1,32 +1,62 @@
-import React, { useState } from 'react';  // <-- import useState
-import { Card, Image, Rating } from 'semantic-ui-react';
+import React, { useState } from 'react';
 
-const FreelancerCard = ({ name, description, imageUrl, rating, experienced, project }) => {
-  const [expanded, setExpanded] = useState(false);  // <-- state to track card expansion
+function JobCard({ job, onDelete, onCardClick }) {
+  const [expanded, setExpanded] = useState(false);
 
-  // Function to shorten description to 7 words
+  if (!job) {
+    return null; // Guard against rendering with an undefined 'job' prop.
+  }
+
+  //const [expanded, setExpanded] = useState(false);
+
+  // Function to shorten job description to 7 words
   const shortenDescription = (desc) => {
     return desc.split(" ").slice(0, 7).join(" ") + "...";
   };
 
-  return (
-    <Card onClick={() => setExpanded(!expanded)}>
-      <Card.Content className="profile-content">
-        <Image src={imageUrl} className="card-image" alt={`${name} profile`} />
-        <Card.Header className="card-name">{name}</Card.Header>
-      </Card.Content>
-      <Card.Content>
-        <Card.Description>
-          {expanded ? description : shortenDescription(description)}
-        </Card.Description>
-        {expanded && <div>{experienced}</div>}
-        {expanded && <div>{project}</div>}
-      </Card.Content>
-      <Card.Content extra>
-        <Rating icon='star' defaultRating={rating} maxRating={5} />
-      </Card.Content>
-    </Card>
-  );
-};
+  const handleDelete = (e) => {
+    e.stopPropagation(); // prevent the onClick event of the parent container from being triggered
+    onDelete(job.id); // call the onDelete prop with the job's id
+  };
 
-export default FreelancerCard;
+const handleCardClick = (e) => {
+    e.stopPropagation();
+    
+    // The onCardClick function will handle checking the user's login state.
+    // We can have it return a boolean, true if the user is logged in, false otherwise.
+    const isUserLoggedIn = onCardClick();
+    
+    // Only toggle expanded state if user is logged in.
+    if (isUserLoggedIn) {
+      setExpanded((prevExpanded) => !prevExpanded);
+    }
+  };
+
+  
+
+  return (
+    
+    <div className="job-card" onClick={handleCardClick}>
+
+    <button className="grey-button" onClick={handleDelete}>Delete</button>
+
+   <div className="job-profile-content">
+      {job.profileImageUrl && <img src={job.profileImageUrl} className="job-card-image" alt="Job Profile" />}
+        <h3 className="job-card-title">{job.title}</h3>
+  
+   </div>
+      <div>
+        <p>{expanded ? job.description : shortenDescription(job.description)}</p>
+        {expanded && <p><strong>Skills:</strong> {job.skills}</p>}
+        {expanded && <p><strong>Email:</strong> {job.email}</p>}
+        {expanded && <p><strong>Project Length:</strong> {job.projectLength} days</p>}
+        {expanded && <p><strong>Payment:</strong> ${job.paymentMin} - ${job.paymentMax}</p>}
+        {expanded && <p><strong>Working Hours:</strong> {job.workingHours}</p>}
+        
+      </div>
+    </div>
+  );
+}
+
+
+export default JobCard;

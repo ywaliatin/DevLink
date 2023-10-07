@@ -1,6 +1,6 @@
 // index.js
 
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { useLocation } from 'react-router-dom';
@@ -16,7 +16,7 @@ import Login2 from './login2';
 import Login from './login'; // Import your Login component
 import Register from './register'; // Import your Login component
 import UserProfile from './profile';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
 import  UserContext  from './UserContext';
 import ForgotPassword from './forgot-password';
 import FreelancerCard from './FreelancerCard';
@@ -31,8 +31,10 @@ import CustomerList from './CustomerList';
 import Signup from './signup';
 import JobPage from './JobPage';
 import PaymentForm from './PaymentForm';
-import ChatComponent from './ChatGPT';
+import Chat from './Chat';
 import ChatGPT from './ChatGPT';
+import { listenToAuthChanges } from './firebase';  // Update this path to point to your Firebase setup file
+
 
 const data = [
   {
@@ -138,10 +140,17 @@ const customerData = [
 
 function Content() {
   const location = useLocation();
+  
+  function ChatWrapper() {
+    const { jobId } = useParams();
+    return <Chat jobId={jobId} />;
+  }
+  
 
   return (
+    
     <div>
-      <Container className="container">
+        <Container className="container">
         <MenuComponent />
       </Container>
       
@@ -163,6 +172,8 @@ function Content() {
             <Route path="/EmpList/:freelancejobId" element={<EmpCard />} />
             
             <Route path="/JobList/:jobId" element={<JobCard />} />
+            <Route path="/Chat/:jobId" element={<ChatWrapper />} />
+
         {/*... Other Routes ...*/}
         <Route path="/" element={
           <>
@@ -188,6 +199,21 @@ function Content() {
 
 function App() {
   const [user, setUser] = useState(null);
+
+  // Effect to listen to authentication changes
+  useEffect(() => {
+    const unsubscribe = listenToAuthChanges((authUser) => {
+      if (authUser) {
+        setUser(authUser); // User is logged in, update the user state
+      } else {
+        setUser(null); // User is logged out, reset the user state
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []); // Note: The empty dependency array ensures this effect runs only once when the component mounts.
+
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

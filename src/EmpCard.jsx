@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function EmpCard({ job, onDelete, onCardClick }) {
+function EmpCard({ job, onDelete, onCardClick, onMessageClick }) {
   const [expanded, setExpanded] = useState(false);
 
   if (!job) {
@@ -54,7 +54,8 @@ const handleCardClick = (e) => {
         {expanded && <p><strong>Working Hours:</strong> {job.workingHours}</p>}
         {expanded && <p><strong>Experience In:</strong> {job.experienceIn} </p>}
         {expanded && <p><strong>For at least:</strong> {job.forAtLeast}</p>}
-     
+        <button className="message-button" onClick={onMessageClick}>Booking</button>
+
       </div>
     </div>
   );

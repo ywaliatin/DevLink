@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFunctions } from "firebase/functions";
 import { getAnalytics } from "firebase/analytics";
 import { 
   getAuth, 
@@ -12,7 +13,7 @@ import {
 } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
-import { getDatabase } from 'firebase/database';
+import { getDatabase, ref, push } from 'firebase/database';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -27,6 +28,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const functions = getFunctions(app);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const database = getDatabase(app);
@@ -57,6 +59,7 @@ export const logout = () => {
 
 export const listenToAuthChanges = (userCallback) => {
   onAuthStateChanged(auth, (user) => {
+    console.log("Firebase Auth State Change:", user);
     if (user) {
       userCallback(user); // User is logged in
     } else {
@@ -64,6 +67,8 @@ export const listenToAuthChanges = (userCallback) => {
     }
   });
 };
+
+export { functions };
 
 export const resetPassword = (email) => {
   return sendPasswordResetEmail(auth, email);

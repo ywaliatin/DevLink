@@ -41,11 +41,23 @@ function EmpList() {
   const handleCardClick = (jobId) => {
     if (!user) {
       alert('Please login/register first to access all FreeList/EmpList cards.');
-      navigate('/login2');
+      navigate('/login');
       return false; // User is not logged in.
     }
     //navigate(`/JobList/${jobId}`);
     return true; // User is logged in.
+  };
+
+  const handleMessageClick = (e, jobId) => {
+    e.stopPropagation();  // Important to stop the card click event
+
+    if (!user) {
+      alert('Please login/register first to send a message.');
+      navigate('/login');
+      return;
+    }
+
+    navigate(`/ChatEmp/${jobId}`);  // Navigate to a chat page for that job
   };
 
   return (
@@ -56,7 +68,8 @@ function EmpList() {
         {filteredJobs.slice(0, visibleJobs).map((job) => (
           job && (
             <div key={job.id}>
-              <EmpCard job={job} onDelete={deleteJob} onCardClick={() => handleCardClick(job.id)} />
+               <EmpCard job={job} onDelete={deleteJob} onCardClick={() => handleCardClick(job.id)} 
+              onMessageClick={(e) => handleMessageClick(e, job.id)}/>
             </div>
           )
         ))}
