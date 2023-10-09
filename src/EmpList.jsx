@@ -62,7 +62,7 @@ function EmpList() {
 
   return (
     <div>
-      <h2>Find Dev's ... </h2>
+      <h2>Find a Job ... </h2>
       <div className="job-list">
         <input type="text" placeholder="Filter by skill or job title..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
         {filteredJobs.slice(0, visibleJobs).map((job) => (
